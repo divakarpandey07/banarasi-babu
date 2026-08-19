@@ -1,0 +1,418 @@
+/* ==========================================================================
+   BANARASI BABU — DEDICATED MULTI-CATEGORY STYLES (category.css)
+   100% Pure Sheer Transparent Magazine Grid · Borderless Cards · Living Background
+   ========================================================================== */
+
+.category-page-main {
+  min-height: 100vh;
+  padding-top: 86px;
+}
+
+/* --------------------------------------------------------------------------
+   1. STREAMLINED CATEGORY HERO & FILTER BAR
+   -------------------------------------------------------------------------- */
+.cat-header-hero {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px max(24px, 5vw) 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cat-hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Quick Category Switcher Strip */
+.cat-quick-nav-scroller {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cat-quick-nav-scroller::-webkit-scrollbar { display: none; }
+
+.cat-tab-chip {
+  white-space: nowrap;
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: var(--pill-bg);
+  border: 1px solid var(--border-divider);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cat-tab-chip:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  transform: translateY(-1px);
+}
+
+.cat-tab-chip.active {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  box-shadow: 0 0 14px var(--theme-glow);
+}
+
+/* Clean Title Cluster */
+.cat-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cat-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+}
+
+.cat-heading {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.cat-narrative {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  max-width: 840px;
+  line-height: 1.6;
+}
+
+/* Floating Search & Subcategory Filter Toolbar */
+.cat-filter-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 8px;
+  border-top: 1.5px solid var(--border-divider);
+}
+
+.cat-search-field {
+  padding: 9px 20px;
+  border-radius: 22px;
+  border: 1px solid var(--border-divider);
+  background: var(--pill-bg);
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  width: min(320px, 100%);
+  outline: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.2s ease;
+}
+
+.cat-search-field:focus {
+  border-color: var(--text-accent);
+  box-shadow: 0 0 14px var(--theme-glow);
+}
+
+.cat-search-field::placeholder { color: var(--text-muted); }
+
+.cat-filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cat-filter-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-divider);
+  background: var(--pill-bg);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.cat-filter-btn:hover, .cat-filter-btn.active {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   2. PURE SHEER TRANSPARENT CARD GRID (NO BOXES, BORDERLESS EDITORIAL)
+   -------------------------------------------------------------------------- */
+.category-content-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px max(24px, 5vw) 80px;
+}
+
+.category-dynamic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 36px 28px;
+  align-items: stretch;
+}
+
+/* 100% Pure Transparent Card Container */
+.cat-detail-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: transform 0.3s var(--ease);
+}
+
+/* Crisp Floating Photo Window */
+.editorial-card-photo {
+  height: 220px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid var(--border-divider);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cat-detail-card:hover .editorial-card-photo {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+  border-color: var(--text-accent);
+}
+
+/* Inner Editorial Typography (Floats directly over Living Background) */
+.card-inner-padding {
+  padding: 0 2px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.card-header-cluster {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-kicker-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+}
+
+.cat-detail-card h2 {
+  font-size: 23px;
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 3px;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.cat-detail-card:hover h2 {
+  color: var(--text-accent);
+}
+
+.verified-badge {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #16a34a;
+  background: var(--pill-bg);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-divider);
+  white-space: nowrap;
+}
+
+.card-body-narrative {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* Meta Data Hairline Matrix */
+.card-meta-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-divider);
+  border-bottom: 1px solid var(--border-divider);
+  margin-top: auto;
+}
+
+.meta-item span {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+}
+
+.meta-item strong {
+  display: block;
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* Nearby Graph (100% Pure Transparent - Zero Boxes) */
+.nearby-graph-wrap {
+  padding: 8px 0 4px;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nearby-graph-head {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.nearby-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nearby-link-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border-divider);
+  padding: 4px 10px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nearby-link-pill:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  transform: translateY(-1px);
+}
+
+/* Card Actions (Zero White Box Backgrounds) */
+.card-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.card-action-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background: var(--text-accent);
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.card-action-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.card-action-btn[data-ai-prompt] {
+  background: transparent;
+  border: 1.5px solid var(--text-accent);
+  color: var(--text-accent);
+}
+
+.card-action-btn[data-ai-prompt]:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+}
+
+.back-home-pill {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--border-divider);
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-left: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-home-pill:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .category-dynamic-grid { 
+    grid-template-columns: 1fr; 
+    gap: 28px;
+  }
+  .cat-filter-toolbar { 
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+  .cat-search-field {
+    width: 100%;
+  }
+  .editorial-card-photo {
+    height: 190px;
+  }
+}

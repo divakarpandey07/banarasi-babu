@@ -1,0 +1,391 @@
+/* ==========================================================================
+   BANARASI BABU — DEDICATED LOCATION PROFILE STYLES (place.css)
+   Clean Editorial Layout · Non-Stretched Hero Photo · Sheer Glass Cards
+   ========================================================================== */
+
+.place-profile-main {
+  padding-top: 74px;
+  min-height: 100vh;
+}
+
+.place-profile-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px max(16px, 4vw) 60px;
+}
+
+/* --------------------------------------------------------------------------
+   ELEGANT HERO PHOTOGRAPH SHOWCASE (NON-STRETCHED)
+   -------------------------------------------------------------------------- */
+.place-hero-photo-banner {
+  position: relative;
+  height: clamp(300px, 42vh, 440px);
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  margin-bottom: 24px;
+  background-color: #0b1320;
+}
+
+.place-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+}
+
+.place-hero-photo-banner:hover .place-hero-img {
+  transform: scale(1.02);
+}
+
+.place-hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(6, 12, 20, 0.94) 0%, rgba(6, 12, 20, 0.4) 55%, rgba(0, 0, 0, 0.05) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px max(20px, 4vw);
+  gap: 8px;
+  color: #ffffff;
+}
+
+.place-category-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-divider);
+}
+
+.place-hero-img-overlay h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  color: #ffffff;
+  font-family: var(--serif);
+  font-weight: 700;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.place-hindi-name {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--text-accent);
+  font-weight: 600;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.place-location-rating {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.star-rating {
+  color: #f59f27;
+}
+
+.star-rating strong {
+  color: #ffffff;
+  margin-left: 2px;
+}
+
+.place-address {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   ACTION TOOLBAR ROW
+   -------------------------------------------------------------------------- */
+.place-action-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   BALANCED 2-COLUMN DETAILS GRID
+   -------------------------------------------------------------------------- */
+.place-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.place-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 100% Pure Sheer Transparent Editorial Blocks (Zero Rigid Boxes) */
+.place-card-block {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 24px 0;
+  border-bottom: 1.5px solid var(--border-divider);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.block-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+}
+
+.place-card-block h2 {
+  font-size: 26px;
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.place-card-block p {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Photo Gallery Grid in Profile */
+.place-photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.gallery-photo-thumb {
+  height: 170px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid var(--border-divider);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-photo-thumb:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-accent);
+}
+
+/* Timings & Aarti Table */
+.timings-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+
+.timings-table-wrap th, 
+.timings-table-wrap td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-divider);
+  font-size: 13.5px;
+}
+
+.timings-table-wrap th {
+  color: var(--text-accent);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timings-table-wrap td {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Rules Matrix */
+.rules-specs-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 18px;
+  padding-top: 6px;
+}
+
+.rules-specs-matrix div {
+  padding: 12px 16px;
+  background: transparent;
+  border-radius: 14px;
+  border: 1px solid var(--border-divider);
+}
+
+.rules-specs-matrix span {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.rules-specs-matrix strong {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+/* Radial Nearby Cluster */
+.nearby-radial-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nearby-pill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: transparent;
+  border: 1px solid var(--border-divider);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.nearby-pill-item:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  transform: translateX(3px);
+}
+
+.nearby-pill-item span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.nearby-pill-item:hover span {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBAR COLUMN (Pure Transparent)
+   -------------------------------------------------------------------------- */
+.place-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 86px;
+}
+
+.sidebar-fact-card, 
+.sidebar-map-box, 
+.sidebar-source-box {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1.5px solid var(--border-divider);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-fact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-fact-list div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-fact-list span {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-fact-list strong {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.place-leaflet-map {
+  height: 220px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-divider);
+}
+
+.sidebar-source-box span {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-accent);
+  text-transform: uppercase;
+}
+
+.sidebar-source-box p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .place-details-grid {
+    grid-template-columns: 1fr;
+  }
+  .place-sidebar-col {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .place-hero-photo-banner {
+    height: 280px;
+  }
+  .rules-specs-matrix {
+    grid-template-columns: 1fr;
+  }
+  .place-card-block {
+    padding: 18px;
+  }
+}

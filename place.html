@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-page-theme="normal" data-theme-mode="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Banarasi Babu — Location & Sanctum Profile. Verified history, darshan timings, pass booking, and nearby places.">
+  <title>Location Profile | Banarasi Babu</title>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="place.css">
+</head>
+<body>
+  <!-- Living 4K Background -->
+  <div class="ambient-living-bg-container" id="ambient-living-bg" aria-hidden="true">
+    <div class="living-photo-layer" id="living-photo-layer"></div>
+    <canvas class="living-particle-canvas" id="living-particle-canvas"></canvas>
+    <div class="ambient-clarity-overlay"></div>
+  </div>
+
+  <!-- Floating Header -->
+  <header class="luxury-floating-navbar" data-header>
+    <div class="nav-brand-group">
+      <a class="brand" href="index.html" aria-label="Back to home">
+        <span class="brand-om" aria-hidden="true">ॐ</span>
+        <span class="brand-name">BANARASI <em>BABU</em></span>
+      </a>
+      <a href="index.html" class="back-home-pill">← Main Page</a>
+      <span class="mode-badge" data-mode-indicator>☀️ DAYLIGHT MOOD</span>
+    </div>
+
+    <nav class="desktop-nav-menu" aria-label="Quick Links">
+      <a href="category.html?type=ghats" class="nav-link">88 Ghats</a>
+      <a href="category.html?type=temples" class="nav-link">Temples</a>
+      <a href="category.html?type=food" class="nav-link">Food</a>
+      <a href="category.html?type=markets" class="nav-link">Markets</a>
+      <a href="category.html?type=festivals" class="nav-link">Festivals</a>
+      <a href="category.html?type=stay" class="nav-link">Stay</a>
+      
+      <!-- Themes Dropdown Button -->
+      <div class="theme-picker-container">
+        <button class="theme-dropdown-btn" data-theme-toggle aria-expanded="false">
+          <span class="theme-btn-icon">✨</span>
+          <span data-active-theme-text>Themes (9)</span>
+          <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="theme-dropdown-menu" data-theme-menu aria-hidden="true">
+          <span class="dropdown-header-tag">CHOOSE ATMOSPHERE:</span>
+          <div class="theme-options-grid">
+            <button class="theme-menu-item active" data-set-theme="normal"><span>🏛️</span><div><strong>Classic Kashi</strong><small>Day</small></div></button>
+            <button class="theme-menu-item" data-set-theme="ganga"><span>🌊</span><div><strong>Ganga Flow</strong><small>Day</small></div></button>
+            <button class="theme-menu-item" data-set-theme="masan_holi"><span>🕉️</span><div><strong>Masan Holi</strong><small>Day</small></div></button>
+            <button class="theme-menu-item" data-set-theme="rangbhari_ekadashi"><span>🌸</span><div><strong>Rangbhari</strong><small>Day</small></div></button>
+            <button class="theme-menu-item" data-set-theme="galiyan"><span>🏮</span><div><strong>Galiyan</strong><small>Day</small></div></button>
+            <button class="theme-menu-item" data-set-theme="ganga_aarti"><span>🪔</span><div><strong>Ganga Aarti</strong><small>Night</small></div></button>
+            <button class="theme-menu-item" data-set-theme="dev_diwali"><span>✨</span><div><strong>Dev Diwali</strong><small>Night</small></div></button>
+            <button class="theme-menu-item" data-set-theme="bhasma_aarti"><span>🔱</span><div><strong>Bhasma Aarti</strong><small>Night</small></div></button>
+            <button class="theme-menu-item" data-set-theme="mahashivratri"><span>🌙</span><div><strong>Mahashivratri</strong><small>Night</small></div></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-action-group">
+      <button class="quick-babu-btn" data-ai-trigger>✦ Ask Babu</button>
+      <button class="mobile-toggle" data-menu-trigger aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-drawer" data-mobile-drawer aria-hidden="true">
+    <div class="drawer-head">
+      <span class="brand"><span class="brand-om">ॐ</span><span class="brand-name">BANARASI <em>BABU</em></span></span>
+      <button class="close-btn" data-mobile-close aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body">
+      <span class="drawer-title">ATMOSPHERES:</span>
+      <div class="drawer-themes">
+        <button class="nav-pill active" data-set-theme="normal">🏛️ Classic</button>
+        <button class="nav-pill" data-set-theme="ganga">🌊 Ganga</button>
+        <button class="nav-pill" data-set-theme="masan_holi">🕉️ Masan</button>
+        <button class="nav-pill" data-set-theme="ganga_aarti">🪔 Aarti</button>
+        <button class="nav-pill" data-set-theme="dev_diwali">✨ Dev Diwali</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="index.html" class="d-link">🏠 Home</a>
+        <a href="category.html?type=ghats" class="d-link">🌊 88 Ghats</a>
+        <a href="category.html?type=temples" class="d-link">🙏 Temples</a>
+        <a href="category.html?type=food" class="d-link">🍛 Food</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Profile Container -->
+  <main id="top" class="place-profile-main">
+    <div class="place-profile-inner" data-profile-container>
+      
+      <!-- LARGE REAL HERO PHOTOGRAPH BANNER -->
+      <section class="place-hero-photo-banner" data-place-hero-img-wrap>
+        <div class="place-hero-img" data-place-hero-img></div>
+        <div class="place-hero-img-overlay">
+          <div class="place-category-badge" data-place-cat>TEMPLE & SANCTUM</div>
+          <h1 data-place-name>Kashi Vishwanath Temple</h1>
+          <h3 class="place-hindi-name" data-place-hindi>श्री काशी विश्वनाथ ज्योतिर्लिंग मंदिर</h3>
+          <div class="place-location-rating">
+            <span class="star-rating">★★★★★ <strong data-place-rating>4.9</strong></span>
+            <span class="place-address" data-place-address>📍 Vishwanath Gali / Corridor, Varanasi 221001</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Action Toolbar -->
+      <section class="place-action-toolbar-row">
+        <button class="btn-primary" data-directions-btn>📍 Get Directions</button>
+        <button class="btn-glass" data-save-btn>🔖 Save Location</button>
+        <button class="btn-glass" data-share-btn>↗ Share</button>
+        <button class="btn-glass" data-ai-place-btn>✦ Ask Babu Guide</button>
+      </section>
+
+      <!-- Grid Content Layout -->
+      <div class="place-details-grid">
+        <!-- Main Column -->
+        <div class="place-main-col">
+          <!-- ABOUT -->
+          <article class="place-card-block">
+            <span class="block-kicker">ABOUT & OVERVIEW</span>
+            <h2>Detailed History & Significance</h2>
+            <p data-place-about>Loading history and significance...</p>
+          </article>
+
+          <!-- PHOTO GALLERY SECTION -->
+          <article class="place-card-block" data-gallery-section>
+            <span class="block-kicker">PHOTOGRAPHS & SIGHTS</span>
+            <h2>Authentic Location Photos</h2>
+            <div class="place-photo-gallery-grid" data-place-gallery>
+              <!-- Populated by place.js -->
+            </div>
+          </article>
+
+          <!-- TIMINGS & AARTIS -->
+          <article class="place-card-block">
+            <span class="block-kicker">TIMINGS & SACRED SCHEDULE</span>
+            <h2>Darshan & Ritual Timings</h2>
+            <div class="timings-table-wrap" data-place-timings></div>
+          </article>
+
+          <!-- ENTRY & OFFICIAL PASSES -->
+          <article class="place-card-block">
+            <span class="block-kicker">ENTRY & OFFICIAL PASSES</span>
+            <h2>Passes & Darshan Booking</h2>
+            <p data-place-entry>Loading booking information...</p>
+          </article>
+
+          <!-- RULES, DRESS CODE & PHOTOGRAPHY -->
+          <article class="place-card-block">
+            <span class="block-kicker">GUIDELINES & CONDUCT</span>
+            <h2>Dress Code, Photography & Security</h2>
+            <div class="rules-specs-matrix">
+              <div><span>👗 Dress Code</span><strong data-place-dress>Traditional / Modest clothing</strong></div>
+              <div><span>📷 Photography</span><strong data-place-photo-rule>Prohibited inside sanctum</strong></div>
+              <div><span>📱 Mobile / Electronics</span><strong data-place-electronics>Free lockers at corridor gate</strong></div>
+              <div><span>⏳ Recommended Duration</span><strong data-place-duration>1 to 2 hours</strong></div>
+            </div>
+          </article>
+
+          <!-- EXPLORE NEARBY -->
+          <article class="place-card-block">
+            <span class="block-kicker">SPATIAL CONNECTIONS</span>
+            <h2>Explore Nearby (Within 500m & 1km)</h2>
+            <div class="nearby-radial-cluster" data-place-nearby></div>
+          </article>
+        </div>
+
+        <!-- Sidebar Column -->
+        <aside class="place-sidebar-col">
+          <!-- Quick Facts -->
+          <div class="sidebar-fact-card">
+            <span class="block-kicker">QUICK TRAVEL FACTS</span>
+            <div class="sidebar-fact-list">
+              <div><span>Best Time to Visit</span><strong data-fact-best-time>04:30 AM – 07:00 AM & 08:30 PM</strong></div>
+              <div><span>Accessibility</span><strong data-fact-accessibility>Wheelchair ramps, escalators, battery carts</strong></div>
+              <div><span>Nearest Ghat</span><strong data-fact-nearest-ghat>Lalita Ghat / Dashashwamedh</strong></div>
+              <div><span>Nearest Food</span><strong data-fact-nearest-food>Ram Bhandar & Kashi Chaat</strong></div>
+            </div>
+          </div>
+
+          <!-- Interactive Map Box -->
+          <div class="sidebar-map-box">
+            <span class="block-kicker">LOCATION MAP</span>
+            <div id="place-map" class="place-leaflet-map"></div>
+          </div>
+
+          <!-- Source & Verification Stamp -->
+          <div class="sidebar-source-card">
+            <span class="verified-badge">✓ Verified Entity</span>
+            <div class="source-details">
+              <span>Official Source:</span>
+              <strong data-place-source>Shri Kashi Vishwanath Temple Trust</strong>
+              <span>Last Verified:</span>
+              <strong data-place-verified-date>24 Aug 2026</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- AI Concierge Panel -->
+  <aside class="ai-concierge-panel" data-ai-panel aria-hidden="true">
+    <div class="concierge-head">
+      <div class="concierge-title-box">
+        <span class="concierge-om">ॐ</span>
+        <div><h3>Banarasi Babu</h3><small>Zero-Hallucination Kashi Assistant</small></div>
+      </div>
+      <button class="close-concierge" data-ai-close aria-label="Close">×</button>
+    </div>
+    <div class="concierge-body" data-ai-messages>
+      <div class="ai-msg bot"><p><strong>प्रणाम!</strong> Ask me anything about this place, darshan passes, best timings, or nearby food spots!</p></div>
+    </div>
+    <form class="concierge-form" data-ai-form>
+      <input type="text" placeholder="Ask Babu anything about this location..." class="concierge-input" data-ai-input required>
+      <button type="submit" class="concierge-submit">✦</button>
+    </form>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><span class="brand-om">ॐ</span><p>Banarasi Babu · Dedicated Location Knowledge Base</p></div>
+      <a href="index.html" class="btn-glass">← Return to Main Page</a>
+      <div class="footer-copy">© 2024–2026 Banarasi Babu. Grounded in verified records.</div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Master Data & Engines -->
+  <script src="data/places.js"></script>
+  <script src="data/ghats.js"></script>
+  <script src="data/activities.js"></script>
+  <script src="data/festivals.js"></script>
+  <script src="data/food.js"></script>
+  <script src="data/markets.js"></script>
+  <script src="data/hotels.js"></script>
+  <script src="data/culture.js"></script>
+  <script src="data/safety-transport.js"></script>
+  
+  <script src="engine/geo-engine.js"></script>
+  <script src="engine/live-engine.js"></script>
+  <script src="engine/ai-brain.js"></script>
+  
+  <script src="place.js"></script>
+</body>
+</html>

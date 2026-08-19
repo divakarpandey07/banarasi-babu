@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en" data-page-theme="normal" data-theme-mode="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Banarasi Babu — The Living Varanasi Knowledge Base & Travel Concierge. 88 Crescent Ghats, Ancient Jyotirlingas, Halwais, Handlooms, and AI.">
+  <title>Banarasi Babu | Living Digital Kashi</title>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ====================================================================
+       FULL-PAGE LIVING 4K BACKGROUND (100% UNBLOCKED & PARALLAX)
+       ==================================================================== -->
+  <div class="ambient-living-bg-container" id="ambient-living-bg" aria-hidden="true">
+    <div class="living-photo-layer" id="living-photo-layer"></div>
+    <canvas class="living-particle-canvas" id="living-particle-canvas"></canvas>
+    <div class="ambient-clarity-overlay"></div>
+  </div>
+
+  <!-- ====================================================================
+       LUXURY FLOATING GLASS NAVBAR
+       ==================================================================== -->
+  <header class="luxury-floating-navbar" data-header>
+    <div class="nav-brand-group">
+      <a class="brand" href="#top" aria-label="Banarasi Babu Home">
+        <span class="brand-om" aria-hidden="true">ॐ</span>
+        <span class="brand-name">BANARASI <em>BABU</em></span>
+      </a>
+      <span class="mode-badge" data-mode-indicator>☀️ DAYLIGHT MOOD</span>
+    </div>
+
+    <!-- Desktop Navigation Menu -->
+    <nav class="desktop-nav-menu" aria-label="Main Navigation">
+      <a href="category.html?type=ghats" class="nav-link">88 Ghats</a>
+      <a href="category.html?type=temples" class="nav-link">Temples</a>
+      <a href="category.html?type=heritage" class="nav-link">Heritage</a>
+      <a href="category.html?type=education" class="nav-link">Colleges</a>
+      <a href="category.html?type=food" class="nav-link">Food</a>
+      <a href="category.html?type=markets" class="nav-link">Markets</a>
+      <a href="category.html?type=festivals" class="nav-link">Festivals</a>
+      <a href="category.html?type=stay" class="nav-link">Stay</a>
+      <a href="#map" class="nav-link">Map</a>
+      
+      <!-- Themes Dropdown Menu (9 Themes Suite) -->
+      <div class="theme-picker-container">
+        <button class="theme-dropdown-btn" data-theme-toggle aria-expanded="false" aria-haspopup="true">
+          <span class="theme-btn-icon">✨</span>
+          <span data-active-theme-text>Themes (9)</span>
+          <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="theme-dropdown-menu" data-theme-menu aria-hidden="true">
+          <span class="dropdown-header-tag">CHOOSE ATMOSPHERE:</span>
+          <div class="theme-options-grid">
+            <button class="theme-menu-item active" data-set-theme="normal">
+              <span class="t-icon">🏛️</span>
+              <div><strong>Classic Kashi</strong><small>Daylight Golden Tone</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="ganga">
+              <span class="t-icon">🌊</span>
+              <div><strong>Ganga Flow</strong><small>Aquamarine River View</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="masan_holi">
+              <span class="t-icon">🕉️</span>
+              <div><strong>Masan Holi</strong><small>Manikarnika Chita Bhasma</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="rangbhari_ekadashi">
+              <span class="t-icon">🌸</span>
+              <div><strong>Rangbhari Ekadashi</strong><small>Gauna Utsav & Gulal</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="galiyan">
+              <span class="t-icon">🏮</span>
+              <div><strong>Banaras Ki Galiyan</strong><small>Silk & Brass Alleyways</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="ganga_aarti">
+              <span class="t-icon">🪔</span>
+              <div><strong>Ganga Aarti</strong><small>Dashashwamedh Lamps</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="dev_diwali">
+              <span class="t-icon">✨</span>
+              <div><strong>Dev Diwali</strong><small>1 Million Clay Diyas</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="bhasma_aarti">
+              <span class="t-icon">🔱</span>
+              <div><strong>Bhasma Aarti</strong><small>Aghor Shiv Naad</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="mahashivratri">
+              <span class="t-icon">🌙</span>
+              <div><strong>Mahashivratri</strong><small>Midnight Shiv Baraat</small></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Action Controls -->
+    <div class="nav-action-group">
+      <button class="quick-now-btn" data-now-trigger aria-label="Open Now In Kashi panel">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="now-text" data-now-temp>28°C · Live</span>
+      </button>
+      <button class="quick-babu-btn" data-ai-trigger>✦ Ask Babu</button>
+      <button class="mobile-toggle" data-menu-trigger aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-drawer" data-mobile-drawer aria-hidden="true">
+    <div class="drawer-head">
+      <span class="brand">
+        <span class="brand-om">ॐ</span>
+        <span class="brand-name">BANARASI <em>BABU</em></span>
+      </span>
+      <button class="close-btn" data-mobile-close aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body">
+      <span class="drawer-title">SELECT ATMOSPHERE:</span>
+      <div class="drawer-themes">
+        <button class="nav-pill active" data-set-theme="normal">🏛️ Classic Kashi</button>
+        <button class="nav-pill" data-set-theme="ganga">🌊 Ganga Flow</button>
+        <button class="nav-pill" data-set-theme="masan_holi">🕉️ Masan Holi</button>
+        <button class="nav-pill" data-set-theme="rangbhari_ekadashi">🌸 Rangbhari</button>
+        <button class="nav-pill" data-set-theme="galiyan">🏮 Galiyan</button>
+        <button class="nav-pill" data-set-theme="ganga_aarti">🪔 Ganga Aarti</button>
+        <button class="nav-pill" data-set-theme="dev_diwali">✨ Dev Diwali</button>
+        <button class="nav-pill" data-set-theme="bhasma_aarti">🔱 Bhasma Aarti</button>
+        <button class="nav-pill" data-set-theme="mahashivratri">🌙 Mahashivratri</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="category.html?type=ghats" class="d-link">🌊 88 Crescent Ghats</a>
+        <a href="category.html?type=temples" class="d-link">🙏 Temples & Sanctums</a>
+        <a href="category.html?type=heritage" class="d-link">🏛️ Heritage & Sarnath</a>
+        <a href="category.html?type=education" class="d-link">🎓 Colleges & BHU</a>
+        <a href="category.html?type=food" class="d-link">🍛 Culinary Heritage</a>
+        <a href="category.html?type=markets" class="d-link">🛍️ Markets & Silk</a>
+        <a href="category.html?type=festivals" class="d-link">🎉 Festivals Calendar</a>
+        <a href="category.html?type=stay" class="d-link">🏨 Stay by Area</a>
+        <a href="category.html?type=transport" class="d-link">🚕 Transport & Boats</a>
+        <a href="category.html?type=safety" class="d-link">🚨 Safety & Helplines</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main id="top">
+    <!-- ====================================================================
+         HERO SECTION: REFINED DECORATION WITH AUTO-ROTATING TITLE (7s)
+         ==================================================================== -->
+    <section class="hero-open" aria-labelledby="hero-title">
+      <div class="hero-open-inner">
+        <div class="hero-mood-badge">
+          <span class="dot"></span> <span data-hero-mood-tag>Classic Kashi · Everyday Living Rhythm</span>
+        </div>
+
+        <div class="hero-typography">
+          <div class="section-kicker">THE LIVING VARANASI EDITORIAL PLATFORM <span></span></div>
+          
+          <div class="rotating-title-wrapper">
+            <h1 id="hero-title" class="rotating-hero-title" data-hero-hindi-title>काशी को देखो नहीं —<br><i>महसूस करो।</i></h1>
+          </div>
+          
+          <p class="hero-sub-statement" data-hero-sub-title>88 Crescent Ghats · Ancient Jyotirlingas · Verified Halwais · Master Handlooms · Grounded AI.</p>
+          <p class="hero-lead-narrative" data-hero-theme-desc>Banaras is not a checklist. It is a morning boat ride into golden mist, a lane that turns into an ancient sanctum, a fragrance of kachori at dawn.</p>
+        </div>
+
+        <div class="hero-action-row">
+          <a class="btn-primary" href="#ghats">✦ Wander Kashi Below</a>
+          <button class="btn-glass" data-itinerary-trigger>🧭 Smart Itinerary (1-3 Days)</button>
+          <button class="btn-glass" data-ai-trigger>Ask Babu AI <span>✦</span></button>
+          <a class="btn-ghost" href="category.html?type=safety">🚨 Safety & Helplines <span>→</span></a>
+        </div>
+
+        <div class="hero-meta-footer">
+          <span class="coords-label" data-hero-coords-label>📍 25.3176° N, 82.9739° E · Varanasi, India</span>
+          <span class="scroll-prompt">Scroll to wander <b>↓</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         "I WANT TO..." EXPERIENCE-FIRST DISCOVERY CHIPS
+         ==================================================================== -->
+    <section class="editorial-section" id="experiences">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">Experience-First Discovery <span></span></div>
+          <h2>I want to<br><i>experience...</i></h2>
+        </div>
+        <p class="section-intro-text">Click any mood to explore tailored places, stories, and routes in Kashi.</p>
+      </div>
+
+      <div class="experience-chips-carousel">
+        <a class="experience-chip" href="category.html?type=ghats">🌅 Watch Dawn Sunrise</a>
+        <a class="experience-chip" href="category.html?type=temples">🙏 Experience Deep Spirituality</a>
+        <a class="experience-chip" href="category.html?type=food">🍛 Eat Famous Street Food</a>
+        <a class="experience-chip" href="category.html?type=markets">🛍️ Buy Real Banarasi Sarees</a>
+        <a class="experience-chip" href="category.html?type=education">🎓 Visit BHU & Colleges</a>
+        <a class="experience-chip" href="category.html?type=heritage">📸 Heritage Photography</a>
+        <a class="experience-chip" href="category.html?type=heritage">🏛️ Explore Ancient History</a>
+        <a class="experience-chip" href="category.html?type=culture">🎶 Listen to Classical Music</a>
+        <a class="experience-chip" href="category.html?type=ghats">🛶 Ride a Ganga Boat</a>
+        <a class="experience-chip" href="category.html?type=festivals">🎉 Witness Sacred Festivals</a>
+        <a class="experience-chip" href="category.html?type=stay">🏨 Ghatside Heritage Stay</a>
+        <a class="experience-chip" href="category.html?type=nature">🧘 Peace & Solitude</a>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         01 THE 88 CRESCENT GHATS (FEATURED SECTION)
+         ==================================================================== -->
+    <section class="editorial-section" id="ghats">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">01 <span></span> Sacred Riverfront</div>
+          <h2>The 88 Crescent Ghats<br><i>of Varanasi.</i></h2>
+        </div>
+        <a class="section-view-all-btn" href="category.html?type=ghats">View All 88 Ghats Profiles →</a>
+      </div>
+
+      <div class="section-editorial-triad">
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/assi_ghat.jpg');"></div>
+          <span class="story-kicker">SOUTHERN GATEWAY</span>
+          <h3>Assi Ghat</h3>
+          <p>Where the holy river Assi meets the Ganga. Famous for Subah-e-Banaras dawn aarti, Vedic chanting, morning flute ragas, and riverfront yoga.</p>
+          <div class="story-specs">
+            <span>⏰ Best: 05:15 AM (Dawn)</span>
+            <span>🛶 Wooden Boats Available</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=ghat_assi">Explore Assi Ghat Details →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/dashashwamedh.jpg');"></div>
+          <span class="story-kicker">SACRED CENTERPIECE</span>
+          <h3>Dashashwamedh Ghat</h3>
+          <p>The supreme spiritual epicenter where Lord Brahma performed the 10-horse sacrifice. Stage for the world-famous 7-priest evening Maha Ganga Aarti.</p>
+          <div class="story-specs">
+            <span>⏰ Aarti: 06:30 PM Daily</span>
+            <span>🪔 7-Priest Fire Aarti</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=ghat_dashashwamedh">Explore Dashashwamedh Details →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/manikarnika.jpg');"></div>
+          <span class="story-kicker">THE MAHASMASHAN</span>
+          <h3>Manikarnika Ghat</h3>
+          <p>The sacred cremation ground where the sacred pyre flame has burned continuously for millennia. Liberation (Moksha) center of Lord Shiva.</p>
+          <div class="story-specs">
+            <span>⏰ Open 24 Hours</span>
+            <span>🕉️ Masan Holi Venue</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=ghat_manikarnika">Explore Manikarnika Details →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         02 TEMPLES & SACRED SANCTUMS (FEATURED SECTION)
+         ==================================================================== -->
+    <section class="editorial-section" id="temples">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">02 <span></span> Jyotirlinga & Deities</div>
+          <h2>Ancient Temples &<br><i>Sacred Sanctums.</i></h2>
+        </div>
+        <a class="section-view-all-btn" href="category.html?type=temples">View All Temples & Sanctums →</a>
+      </div>
+
+      <div class="section-editorial-triad">
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/kashi_vishwanath.jpg');"></div>
+          <span class="story-kicker">SUPREME JYOTIRLINGA</span>
+          <h3>Kashi Vishwanath Dham</h3>
+          <p>One of the 12 sacred Jyotirlingas, crowned with 1,000 kg of pure gold by Maharaja Ranjit Singh, connected to the river via a 5-lakh sq. ft. corridor.</p>
+          <div class="story-specs">
+            <span>⏰ 03:00 AM – 11:00 PM</span>
+            <span>✓ Verified Schedule</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_vishwanath">Corridor Timings & Pass Rules →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/sankat_mochan.jpg');"></div>
+          <span class="story-kicker">TULSIDAS HANUMAN</span>
+          <h3>Sankat Mochan Temple</h3>
+          <p>Founded by Goswami Tulsidas in the 16th century. Famous for dispelling planetary afflictions, evening Hanuman Chalisa, and pure besan laddoos.</p>
+          <div class="story-specs">
+            <span>⏰ 05:00 AM – 10:00 PM</span>
+            <span>🪔 Free Entry</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_sankat_mochan">Sankat Mochan Guide →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/durga_kund.jpg');"></div>
+          <span class="story-kicker">18TH CENTURY SHAKTI</span>
+          <h3>Maa Durga Mandir (Durga Kund)</h3>
+          <p>The iconic ochre-red Nagara style temple built by the Maharani of Natore with the historic holy Durga Kund water tank.</p>
+          <div class="story-specs">
+            <span>⏰ 05:00 AM – 11:00 PM</span>
+            <span>🖤 Red Stone Spire</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_durga_kund">Durga Kund Temple Info →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         03 HERITAGE, FORTS & SARNATH (FEATURED SECTION)
+         ==================================================================== -->
+    <section class="editorial-section" id="heritage">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">03 <span></span> Buddhist & Royal History</div>
+          <h2>Living Monuments &<br><i>Sarnath Archaeology.</i></h2>
+        </div>
+        <a class="section-view-all-btn" href="category.html?type=heritage">Explore All Heritage & Sarnath Sites →</a>
+      </div>
+
+      <div class="section-editorial-triad">
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/dhamekh_stupa.jpg');"></div>
+          <span class="story-kicker">BUDDHA'S FIRST SERMON</span>
+          <h3>Dhamekh Stupa Sarnath</h3>
+          <p>A colossal 43.6m stone stupa where Lord Buddha set the Wheel of Law in motion in 528 BCE, surrounded by serene monastic deer park ruins.</p>
+          <div class="story-specs">
+            <span>⏰ Sunrise to Sunset</span>
+            <span>💰 ₹25 Entry (ASI)</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_sarnath_dhamekh">Sarnath Stupa Guide →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/sarnath_museum.jpg');"></div>
+          <span class="story-kicker">NATIONAL EMBLEM</span>
+          <h3>Sarnath Archaeological Museum</h3>
+          <p>Preserving the original 3rd-century BCE polished sandstone Lion Capital of Ashoka (National Emblem of India) and the 5th-century preaching Buddha.</p>
+          <div class="story-specs">
+            <span>⏰ 09:00 AM – 05:00 PM</span>
+            <span>🚫 Closed Fridays</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_sarnath_museum">Museum Collections →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/ramnagar_fort.jpg');"></div>
+          <span class="story-kicker">ROYAL FORTRESS</span>
+          <h3>Ramnagar Fort & Palace</h3>
+          <p>1750 riverfront fortress of the Maharaja of Banaras, housing rare vintage cars, ivory palanquins, and a 1852 astronomical clock.</p>
+          <div class="story-specs">
+            <span>⏰ 10:00 AM – 05:00 PM</span>
+            <span>🏰 Kashi Naresh Fort</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=place_ramnagar_fort">Ramnagar Fort Details →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         04 CULINARY HERITAGE & HALWAIS (FEATURED SECTION)
+         ==================================================================== -->
+    <section class="editorial-section" id="food">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">04 <span></span> Culinary Heritage</div>
+          <h2>Eat like<br><i>a true Banarasi.</i></h2>
+        </div>
+        <a class="section-view-all-btn" href="category.html?type=food">View Complete Food & Halwai Directory →</a>
+      </div>
+
+      <div class="food-open-spread">
+        <div class="food-spread-visual" style="background-image: url('photos/kachori_sabzi.jpg');" role="img" aria-label="Authentic Kachori Sabzi"></div>
+        <div class="food-spread-details">
+          <span class="food-ritual-tag" data-food-tag>01 · MORNING RITUAL</span>
+          <h3 class="food-spread-title">Kachori<br><i>Sabzi & Jalebi</i></h3>
+          <p class="food-spread-para">Crispy, spiced urad dal pooris served with a fiery, hing-laden potato-chickpea curry and fresh saffron jalebis. Best savoured in the quiet morning hours before 10:00 AM.</p>
+          <div class="food-vendor-info">
+            <span class="vendor-kicker">WHERE TO TASTE AUTHENTICITY</span>
+            <strong>Ram Bhandar (Since 1887, Thatheri Bazaar) & Chachi Ki Kachori (Lanka)</strong>
+            <small>07:00 AM – 11:30 AM · Verified Authentic Heritage</small>
+          </div>
+          <div class="hero-action-row mt-4">
+            <a class="btn-glass" href="category.html?type=food">Browse All Delicacies & Vendors <span>↗</span></a>
+            <button class="btn-glass" data-ai-prompt="Tell me about the best kachori, chaat and malaiyo places in Varanasi">Ask Babu Food Secrets <span>✦</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         05 MARKETS & SHOPPING (FEATURED SECTION)
+         ==================================================================== -->
+    <section class="editorial-section" id="markets">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">05 <span></span> Handlooms & Bazaars</div>
+          <h2>Traditional Markets &<br><i>GI Master Crafts.</i></h2>
+        </div>
+        <a class="section-view-all-btn" href="category.html?type=markets">Explore All Markets & Shopping Guides →</a>
+      </div>
+
+      <div class="section-editorial-triad">
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/banarasi_sari.jpg');"></div>
+          <span class="story-kicker">PURE HANDLOOM SILK</span>
+          <h3>Chowk Wholesale Silk Bazaar</h3>
+          <p>Ancient stone alleyways connecting master weaver cooperatives for authentic pure Katan silk sarees with real gold and silver Zari.</p>
+          <div class="story-specs">
+            <span>🏷️ Silk Mark Certified</span>
+            <span>🚫 Closed Sundays</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=mkt_chowk">Saree Buying Advice →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/galiyan.jpg');"></div>
+          <span class="story-kicker">BEATEN BRASS ART</span>
+          <h3>Thatheri Bazaar</h3>
+          <p>Centuries-old metal-beating lanes where hereditary craftsmen forge sacred brass lotas, tiered aarti lamps, and hand-chiseled temple bells.</p>
+          <div class="story-specs">
+            <span>⚖️ Metal Weight Pricing</span>
+            <span>🔨 Hereditary Thatheras</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=mkt_thatheri_bazaar">Brass Vessels Guide →</a>
+        </article>
+
+        <article class="editorial-story-card">
+          <div class="editorial-card-photo" style="background-image: url('photos/kashi_vishwanath.jpg');"></div>
+          <span class="story-kicker">RELIGIOUS SOUVENIRS</span>
+          <h3>Vishwanath Gali</h3>
+          <p>Historic pedestrian alleyway leading to the Golden Temple filled with natural Rudraksha beads, Shiva idols, pure camphor, and wooden toys.</p>
+          <div class="story-specs">
+            <span>⏰ 06:00 AM – 09:30 PM</span>
+            <span>🚶 Pedestrian Only</span>
+          </div>
+          <a class="card-action-link" href="place.html?id=mkt_vishwanath_gali">Vishwanath Gali Market →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         06 LIVE IN KASHI TODAY
+         ==================================================================== -->
+    <section class="editorial-section" id="live">
+      <div class="section-heading-row">
+        <div>
+          <div class="section-kicker">06 <span></span> Meteorological & Sacred Pulse</div>
+          <h2>Today in<br><i>Kashi.</i></h2>
+        </div>
+        <div class="live-status-pill">
+          <span class="pulse"></span> Live Sync <small data-weather-updated>Open-Meteo Feed</small>
+        </div>
+      </div>
+
+      <div class="live-open-triad">
+        <div class="live-triad-col">
+          <div class="col-meta-header">
+            <span class="col-badge" data-live-badge>Happening Now</span>
+            <span class="col-time" data-live-time>06:30 PM - 07:15 PM</span>
+          </div>
+          <h3 data-live-title>Maha Ganga Aarti<br><i>at Dashashwamedh</i></h3>
+          <p data-live-desc>Seven rhythmic priests worship the holy river with tiered brass lamps, conch shells, and sacred incense as thousands gather on boats.</p>
+          <button class="inline-action-btn" data-map-jump="dashashwamedh">View Location on Map →</button>
+        </div>
+
+        <div class="live-triad-col weather-col">
+          <div class="col-meta-header">
+            <span>LIVE WEATHER · 25.32°N</span>
+            <span data-weather-desc>Clear Skies</span>
+          </div>
+          <div class="weather-prominent-temp">
+            <span class="temp-val" data-weather-temp>28</span>
+            <span class="temp-unit">°C</span>
+            <span class="cond-val" data-weather-desc>Pleasant</span>
+          </div>
+          <div class="weather-metrics-list">
+            <div><span>Humidity</span><strong data-weather-humidity>52%</strong></div>
+            <div><span>Wind</span><strong data-weather-wind>6.8 km/h</strong></div>
+            <div><span>Sunset</span><strong data-weather-sunset>06:35 PM</strong></div>
+            <div><span>Ganga Flow</span><strong>Safe & Calm</strong></div>
+          </div>
+        </div>
+
+        <div class="live-triad-col">
+          <div class="col-meta-header">
+            <span>RIVER & TEMPLE STATUS</span>
+            <span>CURRENT</span>
+          </div>
+          <h3>Corridor & Boat<br><i>Operations</i></h3>
+          <p>Hand-rowed boats and electric catamarans active along all 84 ghats. Standard government rates apply at designated counters.</p>
+          <a class="inline-action-btn" href="category.html?type=transport">Check Official Boat Fares ✦</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         07 LIVING MAP OF VARANASI (ORGANIZED SPATIAL ATLAS)
+         ==================================================================== -->
+    <section class="editorial-section" id="map">
+      <div class="section-heading-row map-heading-row">
+        <div>
+          <div class="section-kicker">07 <span></span> Spatial Geography & Sacred Atlas</div>
+          <h2 class="map-section-title">The Sacred Topography<br><i>of Varanasi.</i></h2>
+          <p class="map-section-subtitle">Real-time geographic directory covering 88 crescent ghats, ancient temples, iconic halwais, and universities.</p>
+        </div>
+      </div>
+
+      <!-- Modern Filter & Navigation Toolbar -->
+      <div class="map-toolbar-card">
+        <div class="map-pills-bar">
+          <button class="map-pill active" data-map-filter="all">✦ All Places (28+)</button>
+          <button class="map-pill" data-map-filter="ghat">🌊 88 Ghats</button>
+          <button class="map-pill" data-map-filter="temple">🛕 Temples & Dham</button>
+          <button class="map-pill" data-map-filter="college">🎓 Colleges & BHU</button>
+          <button class="map-pill" data-map-filter="food">🍛 Food & Sweets</button>
+          <button class="map-pill" data-map-filter="market">🛍️ Silk & Markets</button>
+          <button class="map-pill" data-map-filter="aarti">🪔 Ganga Aarti</button>
+        </div>
+        
+        <div class="map-quick-jump">
+          <label for="map-area-jump" class="sr-only">Jump to Area</label>
+          <select id="map-area-jump" class="map-proximity-select" data-proximity-select>
+            <option value="all">📍 Jump to Zone: Entire Kashi</option>
+            <option value="assi">Assi Ghat & South Zone</option>
+            <option value="dashashwamedh">Dashashwamedh & Godowlia</option>
+            <option value="vishwanath">Kashi Vishwanath Corridor</option>
+            <option value="bhu">Lanka & BHU Campus</option>
+            <option value="cantt">Cantonment & UP College</option>
+            <option value="sarnath">Sarnath Holy Stupa</option>
+            <option value="ramnagar">Ramnagar Fort & Palace</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Map & Interactive Detail Inspector Grid -->
+      <div class="map-workspace-grid">
+        <div class="map-frame-wrapper">
+          <div id="kashi-map" class="leaflet-map-canvas" role="application" aria-label="Interactive map of Varanasi"></div>
+        </div>
+
+        <!-- Location Inspector Panel -->
+        <div class="map-sidebar-panel" data-map-sidebar>
+          <div class="map-sidebar-header">
+            <span class="ms-kicker">LOCATION INSPECTOR</span>
+            <span class="ms-live-badge">📍 Click any Pin</span>
+          </div>
+
+          <div class="map-sidebar-content" data-map-selected-card>
+            <div class="ms-placeholder">
+              <span class="ms-ph-icon">🗺️</span>
+              <h4>Select a Sacred Anchor</h4>
+              <p>Click any golden pin on the map to inspect real photos, timing, historical context, and directions.</p>
+            </div>
+          </div>
+
+          <!-- Quick Jump Chips -->
+          <div class="map-quick-links-strip">
+            <span class="mq-title">Quick Highlights:</span>
+            <div class="mq-chips">
+              <button class="mq-btn" data-map-fly="vishwanath">Kashi Vishwanath</button>
+              <button class="mq-btn" data-map-fly="assi">Assi Ghat</button>
+              <button class="mq-btn" data-map-fly="bhu">BHU Campus</button>
+              <button class="mq-btn" data-map-fly="up_college">UP College</button>
+              <button class="mq-btn" data-map-fly="sarnath">Sarnath</button>
+              <button class="mq-btn" data-map-fly="dashashwamedh">Dashashwamedh</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         08 SMART ITINERARY PLANNER
+         ==================================================================== -->
+    <section class="editorial-section" id="plan">
+      <div class="plan-open-grid">
+        <div class="plan-interactive-col">
+          <div class="section-kicker">08 <span></span> Travel Planning Engine</div>
+          <h2>Plan your personalized<br><i>Kashi journey.</i></h2>
+          <p class="plan-sub-text">Tell us your duration (1–3 Days), pace, budget, and travel style. Banarasi Babu will assemble a time-calibrated route with direct map linkages.</p>
+          <div class="plan-actions">
+            <button class="btn-primary" data-itinerary-trigger>✦ Generate Smart Itinerary</button>
+            <button class="btn-glass" data-ai-trigger>Ask Babu Concierge <span>✦</span></button>
+          </div>
+        </div>
+
+        <div class="plan-quote-col">
+          <span class="quote-symbol">“</span>
+          <p class="quote-body">Banaras is older than history, older than tradition, older even than legend, and looks twice as old as all of them put together.</p>
+          <span class="quote-author">— Mark Twain</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       SMART ITINERARY GENERATOR MODAL
+       ==================================================================== -->
+  <aside class="itinerary-modal" data-itinerary-modal aria-hidden="true">
+    <div class="itinerary-modal-inner">
+      <div class="itinerary-head">
+        <div>
+          <span class="section-kicker">Personalized Travel Engine</span>
+          <h2>Build Your Kashi<br><i>Smart Itinerary.</i></h2>
+        </div>
+        <button class="close-btn" data-itinerary-close aria-label="Close">×</button>
+      </div>
+
+      <form class="itinerary-form" data-itinerary-form>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Trip Duration</label>
+            <select name="duration" class="form-select">
+              <option value="1">1 Day (Ghats, Temple & Aarti)</option>
+              <option value="2" selected>2 Days (Complete Kashi + Sarnath)</option>
+              <option value="3">3 Days (Deep Heritage & Music)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Traveler Type</label>
+            <select name="travelType" class="form-select">
+              <option value="family">Family with Elders / Children</option>
+              <option value="solo">Solo Traveler / Backpacker</option>
+              <option value="couple">Couple / Peaceful Stay</option>
+              <option value="spiritual">Devotee / Spiritual Yatri</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Daily Budget (per person)</label>
+            <select name="budget" class="form-select">
+              <option value="budget">Budget (₹1,000 – ₹2,000 / day)</option>
+              <option value="medium" selected>Standard Comfort (₹3,000 – ₹6,000 / day)</option>
+              <option value="luxury">Palace Luxury (₹10,000+ / day)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Starting Area</label>
+            <select name="startArea" class="form-select">
+              <option value="Assi">Assi / Shivala Area</option>
+              <option value="Godowlia">Godowlia / Dashashwamedh</option>
+              <option value="Cantt">Cantonment (Near Railway Station)</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary w-full mt-4">✦ Generate Verified Plan</button>
+      </form>
+
+      <div class="itinerary-result-display" data-itinerary-result></div>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       NOW IN KASHI DRAWER
+       ==================================================================== -->
+  <aside class="now-panel" data-now-panel aria-hidden="true">
+    <button class="close-now" data-now-close aria-label="Close">×</button>
+    <div class="section-kicker">Sacred Coordinates <span></span></div>
+    <h2>Varanasi<br><i>Real-Time.</i></h2>
+    <div class="now-row"><span>Local Time:</span><strong id="live-clock">--:-- IST</strong></div>
+    <div class="now-row"><span>Ganga Water Temp:</span><strong>22°C (Ideal for Snan)</strong></div>
+    <div class="now-row"><span>Next Sacred Aarti:</span><strong>06:30 PM (Dashashwamedh)</strong></div>
+    <div class="now-row"><span>Air Quality:</span><strong>Moderate (Riverside clean air)</strong></div>
+  </aside>
+
+  <!-- ====================================================================
+       AI CONCIERGE PANEL (GROUNDED IN MASTER DATA)
+       ==================================================================== -->
+  <aside class="ai-concierge-panel" data-ai-panel aria-hidden="true">
+    <div class="concierge-head">
+      <div class="concierge-title-box">
+        <span class="concierge-om">ॐ</span>
+        <div>
+          <h3>Banarasi Babu</h3>
+          <small>Grounded Knowledge Concierge</small>
+        </div>
+      </div>
+      <button class="close-concierge" data-ai-close aria-label="Close">×</button>
+    </div>
+
+    <div class="concierge-body" data-ai-messages>
+      <div class="ai-msg bot">
+        <p><strong>प्रणाम! 🙏</strong> I am Banarasi Babu, your grounded Kashi companion. How can I assist your sacred journey today?</p>
+        <div class="prompt-chips">
+          <button class="chip" data-send-prompt="How do I book Sugam Darshan for Kashi Vishwanath?">How to book Vishwanath Darshan?</button>
+          <button class="chip" data-send-prompt="What is the best route for 84 Ghats morning boat ride?">Best morning boat ride route?</button>
+          <button class="chip" data-send-prompt="Where can I find authentic Hing Kachori at dawn?">Authentic dawn Kachori spots?</button>
+        </div>
+      </div>
+    </div>
+
+    <form class="concierge-form" data-ai-form>
+      <input type="text" placeholder="Ask Babu anything about Kashi..." class="concierge-input" data-ai-input required>
+      <button type="submit" class="concierge-submit">✦</button>
+    </form>
+  </aside>
+
+  <!-- ====================================================================
+       FULL-WIDTH THEME-TRANSPARENT MASTER FOOTER (NO SCANNER, EDGE-TO-EDGE)
+       ==================================================================== -->
+  <footer class="fullwidth-transparent-footer">
+    <div class="fw-footer-container">
+      
+      <div class="fw-footer-grid">
+        
+        <!-- Col 1: Brand & Heritage Mission -->
+        <div class="fw-col fw-brand-col">
+          <a class="fw-logo" href="#top">
+            <span class="fw-om">ॐ</span>
+            <span class="fw-name">Banarasi<em>Babu</em></span>
+          </a>
+          <p class="fw-desc">The living encyclopedic digital companion for the world’s oldest continuously inhabited sacred city. Preserving the heritage, culture, and timeless ethos of Kashi.</p>
+          
+          <div class="fw-kashi-badge">
+            <span class="fw-badge-star">✦</span>
+            <span class="fw-badge-text">काशी विश्वनाथ शरणं प्रपद्ये</span>
+          </div>
+
+          <div class="fw-geo-tag">
+            <span>📍 25.3176° N, 82.9739° E · Uttaravahini Ganga</span>
+            <span>🏛️ UNESCO Tentative Heritage Iconic Topography</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Sacred & Ancient Sights -->
+        <div class="fw-col">
+          <h4 class="fw-col-title">Sacred Topography</h4>
+          <ul class="fw-links-list">
+            <li><a href="category.html?type=ghats">The 88 Crescent Ghats</a></li>
+            <li><a href="place.html?id=place_vishwanath">Kashi Vishwanath Corridor</a></li>
+            <li><a href="place.html?id=place_sankat_mochan">Sankat Mochan Mandir</a></li>
+            <li><a href="place.html?id=place_durga_kund">Maa Durga Kund Temple</a></li>
+            <li><a href="place.html?id=place_sarnath_dhamekh">Sarnath Dhamekh Stupa</a></li>
+            <li><a href="category.html?type=festivals">Festivals & Dev Deepawali</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Flavors, Silk & Stays -->
+        <div class="fw-col">
+          <h4 class="fw-col-title">Flavors, Silk & Craft</h4>
+          <ul class="fw-links-list">
+            <li><a href="category.html?type=food">Hing Kachori Sabzi & Jalebi</a></li>
+            <li><a href="category.html?type=food">Winter Saffron Malaiyo</a></li>
+            <li><a href="category.html?type=food">Kulhad Tamatar Chaat & Lassi</a></li>
+            <li><a href="category.html?type=markets">GI Pure Katan Silk Sarees</a></li>
+            <li><a href="category.html?type=markets">Thatheri Brass & Wooden Toys</a></li>
+            <li><a href="category.html?type=stay">Verified Ghatside Stays</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Essential Helplines & AI Concierge -->
+        <div class="fw-col fw-concierge-col">
+          <h4 class="fw-col-title">Helplines & Concierge</h4>
+          <ul class="fw-links-list">
+            <li><a href="category.html?type=safety">🚨 UP Police & Tourist: <strong>112</strong></a></li>
+            <li><a href="category.html?type=transport">🛶 Official Ganga Boat Rates</a></li>
+            <li><a href="category.html?type=safety">🦽 Wheelchair & Ramp Access</a></li>
+            <li><a href="place.html?id=place_up_college">🎓 UP College (1909) & BHU</a></li>
+          </ul>
+          <div class="fw-ai-trigger-card" data-ai-trigger>
+            <div class="fw-ai-icon">✦</div>
+            <div class="fw-ai-info">
+              <strong>Ask Babu AI Concierge</strong>
+              <small>Instant answers on ghats, food & routes</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Full-Width Clean Footer Base -->
+      <div class="fw-footer-bottom">
+        <p>© 2026 Banarasi Babu. Dedicated to the eternal living heritage of Kashi (Varanasi).</p>
+        <a href="#top" class="fw-top-btn" aria-label="Scroll back to top">Back to Top ↑</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Master Datasets -->
+  <script src="data/places.js"></script>
+  <script src="data/ghats.js"></script>
+  <script src="data/activities.js"></script>
+  <script src="data/festivals.js"></script>
+  <script src="data/food.js"></script>
+  <script src="data/markets.js"></script>
+  <script src="data/hotels.js"></script>
+  <script src="data/culture.js"></script>
+  <script src="data/safety-transport.js"></script>
+
+  <!-- Engines -->
+  <script src="engine/geo-engine.js"></script>
+  <script src="engine/live-engine.js"></script>
+  <script src="engine/festival-engine.js"></script>
+  <script src="engine/trip-memory.js"></script>
+  <script src="engine/ai-brain.js"></script>
+
+  <!-- Master Homepage Controller -->
+  <script src="script.js"></script>
+</body>
+</html>

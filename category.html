@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" data-page-theme="normal" data-theme-mode="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Banarasi Babu — Dedicated Master Explorer for Varanasi Ghats, Temples, Heritage, Food, and Markets.">
+  <title>Master Explorer | Banarasi Babu</title>
+  
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="category.css">
+</head>
+<body>
+  <!-- ====================================================================
+       FULL-PAGE 100% UNBLOCKED LIVING 4K BACKGROUND (PARALLAX MOTION)
+       ==================================================================== -->
+  <div class="ambient-living-bg-container" id="ambient-living-bg" aria-hidden="true">
+    <div class="living-photo-layer" id="living-photo-layer"></div>
+    <canvas class="living-particle-canvas" id="living-particle-canvas"></canvas>
+    <div class="ambient-clarity-overlay"></div>
+  </div>
+
+  <!-- ====================================================================
+       BEAUTIFULLY DECORATED SLEEK FLOATING HEADER
+       ==================================================================== -->
+  <header class="luxury-floating-navbar" data-header>
+    <div class="nav-brand-group">
+      <a class="brand" href="index.html" aria-label="Back to home">
+        <span class="brand-om" aria-hidden="true">ॐ</span>
+        <span class="brand-name">BANARASI <em>BABU</em></span>
+      </a>
+      <a href="index.html" class="back-home-pill">← Main Kashi Page</a>
+      <span class="mode-badge" data-mode-indicator>☀️ DAYLIGHT MOOD</span>
+    </div>
+
+    <!-- Main Navigation Links -->
+    <nav class="desktop-nav-menu" aria-label="Category Navigation">
+      <!-- Compact Themes Dropdown Button -->
+      <div class="theme-picker-container">
+        <button class="theme-dropdown-btn" data-theme-toggle aria-expanded="false" aria-label="Select Kashi Theme">
+          <span class="theme-btn-icon">✨</span>
+          <span data-active-theme-text>Themes (9)</span>
+          <span class="dropdown-chevron">▾</span>
+        </button>
+        
+        <!-- Dropdown Menu of Themes -->
+        <div class="theme-dropdown-menu" data-theme-menu aria-hidden="true">
+          <span class="dropdown-header-tag">CHOOSE ATMOSPHERE:</span>
+          <div class="theme-options-grid">
+            <button class="theme-menu-item active" data-set-theme="normal">
+              <span class="t-icon">🏛️</span>
+              <div><strong>Classic Kashi</strong><small>Day · Everyday Living</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="ganga">
+              <span class="t-icon">🌊</span>
+              <div><strong>Ganga Flow</strong><small>Day · Sacred Waters</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="masan_holi">
+              <span class="t-icon">🕉️</span>
+              <div><strong>Masan Holi</strong><small>Day · Sacred Pyre Ash</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="rangbhari_ekadashi">
+              <span class="t-icon">🌸</span>
+              <div><strong>Rangbhari Ekadashi</strong><small>Day · Gulal Utsav</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="galiyan">
+              <span class="t-icon">🏮</span>
+              <div><strong>Banaras Ki Galiyan</strong><small>Day · Ancient Lanes</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="ganga_aarti">
+              <span class="t-icon">🪔</span>
+              <div><strong>Ganga Aarti</strong><small>Night · Maha Aarti Fire</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="dev_diwali">
+              <span class="t-icon">✨</span>
+              <div><strong>Dev Diwali</strong><small>Night · 1 Million Diyas</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="bhasma_aarti">
+              <span class="t-icon">🔱</span>
+              <div><strong>Bhasma Aarti</strong><small>Night · Shiv Naad</small></div>
+            </button>
+            <button class="theme-menu-item" data-set-theme="mahashivratri">
+              <span class="t-icon">🌙</span>
+              <div><strong>Mahashivratri</strong><small>Night · Cosmic Jaagran</small></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Quick Actions -->
+    <div class="nav-action-group">
+      <button class="quick-babu-btn" data-ai-trigger>✦ Ask Babu</button>
+      <a href="index.html#live" class="quick-now-btn" aria-label="Now in Kashi">
+        <span class="pulse"></span> <span class="now-text">Live Kashi</span>
+      </a>
+      <button class="mobile-toggle" data-menu-trigger aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       MOBILE SLIDE DRAWER
+       ==================================================================== -->
+  <aside class="mobile-drawer" data-mobile-drawer aria-hidden="true">
+    <div class="drawer-head">
+      <span class="brand">
+        <span class="brand-om">ॐ</span>
+        <span class="brand-name">BANARASI <em>BABU</em></span>
+      </span>
+      <button class="close-btn" data-mobile-close aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body">
+      <span class="drawer-title">SELECT ATMOSPHERE:</span>
+      <div class="drawer-themes">
+        <button class="nav-pill active" data-set-theme="normal">🏛️ Classic Kashi</button>
+        <button class="nav-pill" data-set-theme="ganga">🌊 Ganga Flow</button>
+        <button class="nav-pill" data-set-theme="masan_holi">🕉️ Masan Holi</button>
+        <button class="nav-pill" data-set-theme="rangbhari_ekadashi">🌸 Rangbhari</button>
+        <button class="nav-pill" data-set-theme="galiyan">🏮 Galiyan</button>
+        <button class="nav-pill" data-set-theme="ganga_aarti">🪔 Ganga Aarti</button>
+        <button class="nav-pill" data-set-theme="dev_diwali">✨ Dev Diwali</button>
+        <button class="nav-pill" data-set-theme="bhasma_aarti">🔱 Bhasma Aarti</button>
+        <button class="nav-pill" data-set-theme="mahashivratri">🌙 Mahashivratri</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="index.html" class="d-link">🏠 Main Home Page</a>
+        <a href="category.html?type=ghats" class="d-link">🌊 88 Crescent Ghats</a>
+        <a href="category.html?type=temples" class="d-link">🙏 Temples & Sanctums</a>
+        <a href="category.html?type=heritage" class="d-link">🏛️ Heritage & Sarnath</a>
+        <a href="category.html?type=food" class="d-link">🍛 Food & Halwais</a>
+        <a href="category.html?type=markets" class="d-link">🛍️ Markets & Silk</a>
+        <a href="category.html?type=festivals" class="d-link">🎉 Festivals Calendar</a>
+        <a href="category.html?type=stay" class="d-link">🏨 Stay by Area</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main id="top" class="category-page-main">
+    <!-- ====================================================================
+         STREAMLINED CATEGORY HERO & FILTER BAR
+         ==================================================================== -->
+    <section class="cat-header-hero">
+      <div class="cat-hero-container">
+        
+        <!-- Category Navigation Chips -->
+        <div class="cat-quick-nav-scroller">
+          <a href="category.html?type=ghats" class="cat-tab-chip" data-cat-link="ghats">🌊 88 Ghats</a>
+          <a href="category.html?type=temples" class="cat-tab-chip" data-cat-link="temples">🛕 Temples</a>
+          <a href="category.html?type=education" class="cat-tab-chip" data-cat-link="education">🎓 Colleges & BHU</a>
+          <a href="category.html?type=food" class="cat-tab-chip" data-cat-link="food">🍛 Food & Sweets</a>
+          <a href="category.html?type=markets" class="cat-tab-chip" data-cat-link="markets">🛍️ Silk & Markets</a>
+          <a href="category.html?type=festivals" class="cat-tab-chip" data-cat-link="festivals">🎉 Festivals</a>
+          <a href="category.html?type=heritage" class="cat-tab-chip" data-cat-link="heritage">🏛️ Heritage & Sarnath</a>
+          <a href="category.html?type=stay" class="cat-tab-chip" data-cat-link="stay">🏨 Verified Stays</a>
+          <a href="category.html?type=transport" class="cat-tab-chip" data-cat-link="transport">🛶 Boat Rates</a>
+          <a href="category.html?type=safety" class="cat-tab-chip" data-cat-link="safety">🚨 Helpline 112</a>
+        </div>
+
+        <!-- Clean Title Cluster -->
+        <div class="cat-title-wrap">
+          <span class="cat-kicker">BANARASI BABU ARCHIVE ✦ VERIFIED DIRECTORY</span>
+          <h1 class="cat-heading" data-hero-title>The 88 Crescent Ghats of Varanasi</h1>
+          <p class="cat-narrative" data-hero-desc>Southern Assi to Northern Rajghat · Verified history, purana citations, and sacred timings.</p>
+        </div>
+
+        <!-- Floating Search & Subcategory Filter Bar -->
+        <div class="cat-filter-toolbar">
+          <input type="text" placeholder="Search within this directory..." class="cat-search-field" data-cat-search aria-label="Search places">
+          <div class="cat-filter-pills" data-cat-filters></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         DYNAMIC EDITORIAL CONTENT GRID (100% PURE TRANSPARENT CARDS)
+         ==================================================================== -->
+    <section class="category-content-container">
+      <div class="category-dynamic-grid" data-category-grid></div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       "ASK BANARASI BABU" AI CONCIERGE DRAWER
+       ==================================================================== -->
+  <aside class="ai-concierge-panel" data-ai-panel aria-hidden="true">
+    <div class="concierge-head">
+      <div class="concierge-title-box">
+        <span class="concierge-om">ॐ</span>
+        <div>
+          <h3>Banarasi Babu</h3>
+          <small>Grounded Varanasi Knowledge Engine · Zero Hallucinations</small>
+        </div>
+      </div>
+      <button class="close-concierge" data-ai-close aria-label="Close">×</button>
+    </div>
+
+    <div class="concierge-body" data-ai-messages>
+      <div class="ai-msg bot">
+        <p><strong>प्रणाम! Namaste.</strong> I am your living companion to Varanasi, directly grounded in verified temple, ghat, food, and festival databases. Ask me anything about Kashi!</p>
+      </div>
+      <div class="prompt-chips">
+        <button class="chip" data-send-prompt="What should I do in Kashi after 6 PM today?">🌙 What to do after 6 PM?</button>
+        <button class="chip" data-send-prompt="Where can I find authentic Kachori Sabzi and Malaiyo?">🍛 Best breakfast & sweets</button>
+        <button class="chip" data-send-prompt="What is the best morning walking route starting from Assi Ghat?">🚶 Best morning walk from Assi</button>
+        <button class="chip" data-send-prompt="Where should I buy genuine Silk Sarees and beaten brass?">🛍️ Saree & brass buying advice</button>
+      </div>
+    </div>
+
+    <form class="concierge-form" data-ai-form>
+      <input type="text" placeholder="Ask Banarasi Babu anything about Kashi..." class="concierge-input" data-ai-input required>
+      <button type="submit" class="concierge-submit" aria-label="Send">✦</button>
+    </form>
+  </aside>
+
+  <!-- ====================================================================
+       SITE FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-om">ॐ</span>
+        <p>Banarasi Babu · Dedicated Kashi Master Explorer</p>
+      </div>
+      <a href="index.html" class="btn-glass">← Return to Main Page</a>
+      <div class="footer-copy">© 2024–2026 Banarasi Babu. Grounded in verified sources.</div>
+    </div>
+  </footer>
+
+  <!-- Master Knowledge Database Layer -->
+  <script src="data/places.js"></script>
+  <script src="data/ghats.js"></script>
+  <script src="data/activities.js"></script>
+  <script src="data/festivals.js"></script>
+  <script src="data/food.js"></script>
+  <script src="data/markets.js"></script>
+  <script src="data/hotels.js"></script>
+  <script src="data/culture.js"></script>
+  <script src="data/safety-transport.js"></script>
+  
+  <!-- Core Engines Layer -->
+  <script src="engine/geo-engine.js"></script>
+  <script src="engine/live-engine.js"></script>
+  <script src="engine/festival-engine.js"></script>
+  <script src="engine/trip-memory.js"></script>
+  <script src="engine/ai-brain.js"></script>
+
+  <!-- Category Page Dedicated Controller -->
+  <script src="category.js"></script>
+</body>
+</html>
