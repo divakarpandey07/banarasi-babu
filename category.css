@@ -399,20 +399,74 @@
   color: #ffffff;
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsiveness (100% Smooth on Mobile Screens) */
 @media (max-width: 768px) {
+  .category-page-main {
+    padding-top: 72px;
+  }
+  .cat-header-hero {
+    padding: 16px 16px 12px;
+    gap: 14px;
+  }
+  .cat-quick-nav-scroller {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding-bottom: 6px;
+  }
+  .cat-quick-nav-scroller::-webkit-scrollbar { display: none; }
+  .cat-tab-chip {
+    padding: 6px 12px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .cat-heading {
+    font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+  }
+  .cat-narrative {
+    font-size: 13.5px;
+  }
+  .category-content-container {
+    padding: 16px 16px 40px;
+  }
   .category-dynamic-grid { 
     grid-template-columns: 1fr; 
     gap: 28px;
   }
   .cat-filter-toolbar { 
     flex-direction: column; 
-    align-items: flex-start; 
+    align-items: stretch;
+    gap: 10px;
   }
   .cat-search-field {
     width: 100%;
   }
+  .cat-filter-pills {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding-bottom: 4px;
+  }
+  .cat-filter-pills::-webkit-scrollbar { display: none; }
+  .cat-filter-btn {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
   .editorial-card-photo {
-    height: 190px;
+    height: 200px;
+    border-radius: 14px;
+  }
+  .card-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .card-action-btn {
+    width: 100%;
+    height: 42px;
+    justify-content: center;
   }
 }

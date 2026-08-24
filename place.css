@@ -367,11 +367,15 @@
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (100% Smooth on Mobile Screens)
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
+  .place-profile-main {
+    padding-top: 72px;
+  }
   .place-details-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
   .place-sidebar-col {
     position: static;
@@ -379,13 +383,25 @@
 }
 
 @media (max-width: 600px) {
+  .place-hero-section {
+    padding: 16px 16px 10px;
+  }
   .place-hero-photo-banner {
-    height: 280px;
+    height: 240px;
+    border-radius: 16px;
+  }
+  .place-hero-meta {
+    flex-wrap: wrap;
+    gap: 6px;
   }
   .rules-specs-matrix {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
   .place-card-block {
-    padding: 18px;
+    padding: 12px 0 20px;
+  }
+  .place-leaflet-map {
+    height: 200px;
   }
 }
