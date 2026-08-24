@@ -54,13 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       applyTheme(btn.dataset.setTheme);
-      setTimeout(() => {
-        const drawer = document.querySelector('[data-mobile-drawer]');
-        const backdrop = document.querySelector('[data-drawer-backdrop]');
-        drawer?.classList.remove('open');
-        backdrop?.classList.remove('active');
-        document.body.style.overflow = '';
-      }, 220);
+      document.querySelector('[data-mobile-drawer]')?.classList.remove('open');
     });
   });
 
@@ -486,15 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Drawer
   const mobileToggle = document.querySelector('[data-menu-trigger]');
   const mobileDrawer = document.querySelector('[data-mobile-drawer]');
-  const drawerBackdrop = document.querySelector('[data-drawer-backdrop]');
+  const closeDrawer = document.querySelector('[data-mobile-close]');
 
-  function setMobileDrawer(open) {
-    mobileDrawer?.classList.toggle('open', open);
-    drawerBackdrop?.classList.toggle('active', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-
-  mobileToggle?.addEventListener('click', () => setMobileDrawer(true));
-  document.querySelectorAll('[data-mobile-close]').forEach(btn => btn.addEventListener('click', () => setMobileDrawer(false)));
-  drawerBackdrop?.addEventListener('click', () => setMobileDrawer(false));
+  mobileToggle?.addEventListener('click', () => mobileDrawer?.classList.add('open'));
+  closeDrawer?.addEventListener('click', () => mobileDrawer?.classList.remove('open'));
 });

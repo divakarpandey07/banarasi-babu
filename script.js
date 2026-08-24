@@ -238,9 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       applyTheme(btn.dataset.setTheme);
-      setTimeout(() => {
-        if (typeof setMobileDrawer === 'function') setMobileDrawer(false);
-      }, 220);
+      setMobileDrawer(false);
     });
   });
 
@@ -638,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mobileToggle = document.querySelector('[data-menu-trigger]');
   const mobileDrawer = document.querySelector('[data-mobile-drawer]');
-  const drawerBackdrop = document.querySelector('[data-drawer-backdrop]');
+  const closeDrawer = document.querySelector('[data-mobile-close]');
   const dLinks = document.querySelectorAll('.d-link');
 
   function setNow(open) { 
@@ -653,7 +651,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function setMobileDrawer(open) {
     mobileDrawer?.classList.toggle('open', open);
     mobileDrawer?.setAttribute('aria-hidden', String(!open));
-    drawerBackdrop?.classList.toggle('active', open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
@@ -663,8 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
   closeAi?.addEventListener('click', () => setAi(false));
 
   mobileToggle?.addEventListener('click', () => setMobileDrawer(true));
-  document.querySelectorAll('[data-mobile-close]').forEach(btn => btn.addEventListener('click', () => setMobileDrawer(false)));
-  drawerBackdrop?.addEventListener('click', () => setMobileDrawer(false));
+  closeDrawer?.addEventListener('click', () => setMobileDrawer(false));
   dLinks.forEach(l => l.addEventListener('click', () => setMobileDrawer(false)));
 
   async function sendAiMessage(txt) {
