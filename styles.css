@@ -162,9 +162,6 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   background-color: #060c14;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  overscroll-behavior-y: none;
 }
 
 body {
@@ -178,8 +175,6 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-color: transparent !important;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
 a {
@@ -280,8 +275,6 @@ i {
   pointer-events: none;
   overflow: hidden;
   background: transparent;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .living-photo-layer {
@@ -296,21 +289,6 @@ i {
   will-change: transform;
   filter: saturate(115%) contrast(105%);
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-}
-
-/* 120Hz Butter-Smooth Mobile Background Optimization */
-@media (max-width: 768px), (pointer: coarse) {
-  .living-photo-layer {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform: none !important;
-    will-change: auto;
-    filter: none;
-  }
 }
 
 .living-particle-canvas {
@@ -858,8 +836,6 @@ i {
   padding: 55px max(20px, 6vw);
   max-width: 1280px;
   margin: 0 auto;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 450px;
 }
 
 .section-heading-row {
@@ -1960,8 +1936,6 @@ i {
   padding: 50px max(24px, 5vw) 24px;
   position: relative;
   z-index: 20;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 350px;
 }
 
 .fw-footer-container {
