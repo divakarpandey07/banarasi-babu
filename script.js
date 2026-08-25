@@ -367,9 +367,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  closeItineraryBtn?.addEventListener('click', () => {
-    itineraryModal?.classList.remove('open');
-    itineraryModal?.setAttribute('aria-hidden', 'true');
+  document.querySelectorAll('[data-itinerary-close]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      itineraryModal?.classList.remove('open');
+      itineraryModal?.setAttribute('aria-hidden', 'true');
+    });
   });
 
   itineraryForm?.addEventListener('submit', (e) => {
@@ -654,14 +656,44 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  nowTrigger?.addEventListener('click', () => { setAi(false); setNow(!nowPanel.classList.contains('open')); });
-  closeNow?.addEventListener('click', () => setNow(false));
-  aiTriggers.forEach(b => b.addEventListener('click', () => { setNow(false); setAi(true); }));
-  closeAi?.addEventListener('click', () => setAi(false));
+  nowTrigger?.addEventListener('click', (e) => { e.stopPropagation(); setAi(false); setNow(!nowPanel.classList.contains('open')); });
+  document.querySelectorAll('[data-now-close]').forEach(btn => btn.addEventListener('click', () => setNow(false)));
+  aiTriggers.forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); setNow(false); setAi(true); }));
+  document.querySelectorAll('[data-ai-close]').forEach(btn => btn.addEventListener('click', () => setAi(false)));
 
-  mobileToggle?.addEventListener('click', () => setMobileDrawer(true));
-  closeDrawer?.addEventListener('click', () => setMobileDrawer(false));
+  mobileToggle?.addEventListener('click', (e) => { e.stopPropagation(); setMobileDrawer(true); });
+  document.querySelectorAll('[data-mobile-close]').forEach(btn => btn.addEventListener('click', () => setMobileDrawer(false)));
   dLinks.forEach(l => l.addEventListener('click', () => setMobileDrawer(false)));
+
+  // Dismiss any open panel or modal when clicking outside
+  document.addEventListener('click', (e) => {
+    if (nowPanel?.classList.contains('open') && !e.target.closest('[data-now-panel]') && !e.target.closest('[data-now-trigger]')) {
+      setNow(false);
+    }
+    if (aiPanel?.classList.contains('open') && !e.target.closest('[data-ai-panel]') && !e.target.closest('[data-ai-trigger]')) {
+      setAi(false);
+    }
+    if (itineraryModal?.classList.contains('open') && !e.target.closest('.itinerary-modal-inner') && !e.target.closest('[data-itinerary-trigger]')) {
+      itineraryModal.classList.remove('open');
+      itineraryModal.setAttribute('aria-hidden', 'true');
+    }
+    if (mobileDrawer?.classList.contains('open') && !e.target.closest('[data-mobile-drawer]') && !e.target.closest('[data-menu-trigger]')) {
+      setMobileDrawer(false);
+    }
+  });
+
+  // Escape key instantly dismisses all open modals & drawers
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setNow(false);
+      setAi(false);
+      setMobileDrawer(false);
+      itineraryModal?.classList.remove('open');
+      itineraryModal?.setAttribute('aria-hidden', 'true');
+      themeDropdownMenu?.classList.remove('open');
+      themeDropdownBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   async function sendAiMessage(txt) {
     if (!txt.trim()) return;
@@ -693,6 +725,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-send-prompt]').forEach(chip => {
     chip.addEventListener('click', () => sendAiMessage(chip.dataset.sendPrompt));
+  });
+
+  // Floating Quick Return Button Handler
+  const scrollTopBtn = document.getElementById('floating-scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 450) {
+      scrollTopBtn?.classList.add('visible');
+    } else {
+      scrollTopBtn?.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  scrollTopBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Smart History Back Handler for all pages
+  document.querySelectorAll('[data-action="go-back"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
   });
 
   // Apply Initial Theme

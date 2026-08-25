@@ -618,7 +618,7 @@
           <span class="section-kicker">Personalized Travel Engine</span>
           <h2>Build Your Kashi<br><i>Smart Itinerary.</i></h2>
         </div>
-        <button class="close-btn" data-itinerary-close aria-label="Close">×</button>
+        <button class="close-btn" data-itinerary-close aria-label="Close window">✕ Close</button>
       </div>
 
       <form class="itinerary-form" data-itinerary-form>
@@ -658,6 +658,7 @@
           </div>
         </div>
         <button type="submit" class="btn-primary w-full mt-4">✦ Generate Verified Plan</button>
+        <button type="button" class="btn-glass w-full mt-4" data-itinerary-close style="justify-content: center;">✕ Close Window / वापस जाएं</button>
       </form>
 
       <div class="itinerary-result-display" data-itinerary-result></div>
@@ -668,13 +669,14 @@
        NOW IN KASHI DRAWER
        ==================================================================== -->
   <aside class="now-panel" data-now-panel aria-hidden="true">
-    <button class="close-now" data-now-close aria-label="Close">×</button>
+    <button class="close-now" data-now-close aria-label="Close">✕</button>
     <div class="section-kicker">Sacred Coordinates <span></span></div>
     <h2>Varanasi<br><i>Real-Time.</i></h2>
     <div class="now-row"><span>Local Time:</span><strong id="live-clock">--:-- IST</strong></div>
     <div class="now-row"><span>Ganga Water Temp:</span><strong>22°C (Ideal for Snan)</strong></div>
     <div class="now-row"><span>Next Sacred Aarti:</span><strong>06:30 PM (Dashashwamedh)</strong></div>
     <div class="now-row"><span>Air Quality:</span><strong>Moderate (Riverside clean air)</strong></div>
+    <button type="button" class="btn-glass w-full mt-4" data-now-close style="justify-content: center;">✕ Close / वापस जाएं</button>
   </aside>
 
   <!-- ====================================================================
@@ -790,6 +792,9 @@
 
     </div>
   </footer>
+
+  <!-- Floating Quick Return Button -->
+  <button class="floating-scroll-top-btn" id="floating-scroll-top" aria-label="Return to top">↑ Top / ऊपर जाएं</button>
 
   <!-- Leaflet Map JS -->
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

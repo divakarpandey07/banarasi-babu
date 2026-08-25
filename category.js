@@ -71,6 +71,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Smart History Back & Dismiss Handlers
+  document.querySelectorAll('[data-action="go-back"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      themeDropdownMenu?.classList.remove('open');
+      themeDropdownBtn?.setAttribute('aria-expanded', 'false');
+      document.querySelector('[data-mobile-drawer]')?.classList.remove('open');
+    }
+  });
+
   // 120Hz Optimized Living Background & Scroll Handler
   let scrollY = window.scrollY;
   let targetScrollY = scrollY;
