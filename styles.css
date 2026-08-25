@@ -13,39 +13,39 @@
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ☀️ DAYTIME BASE MATRICES (Deep Ink Typography & 100% Sheer Transparent Glass) */
+/* ☀️ DAYTIME BASE MATRICES (Deep Ink Typography & 90% Sheer Transparent Glass) */
 [data-theme-mode="day"] {
-  --bg-solid-base: #e6ecf4;
+  --bg-solid-base: transparent;
   --text-primary: #020617;
   --text-secondary: #1e293b;
   --text-muted: #475569;
-  --header-bg: rgba(255, 255, 255, 0.22);
+  --header-bg: rgba(255, 255, 255, 0.12);
   --header-border: rgba(0, 0, 0, 0.10);
-  --dropdown-bg: rgba(255, 255, 255, 0.25);
-  --border-divider: rgba(0, 0, 0, 0.12);
-  --pill-bg: rgba(255, 255, 255, 0.20);
-  --tag-bg: rgba(255, 255, 255, 0.25);
+  --dropdown-bg: rgba(255, 255, 255, 0.15);
+  --border-divider: rgba(0, 0, 0, 0.10);
+  --pill-bg: rgba(255, 255, 255, 0.12);
+  --tag-bg: rgba(255, 255, 255, 0.15);
   --card-bg: transparent;
   --card-border: rgba(0, 0, 0, 0.10);
-  --card-hover-bg: rgba(255, 255, 255, 0.35);
+  --card-hover-bg: rgba(255, 255, 255, 0.22);
   --photo-opacity: 1;
 }
 
-/* 🌙 NIGHTTIME / DUSK BASE MATRICES (Pure Luminous Typography & 100% Sheer Nocturnal Glass) */
+/* 🌙 NIGHTTIME / DUSK BASE MATRICES (Pure Luminous Typography & 90% Sheer Nocturnal Glass) */
 [data-theme-mode="night"] {
-  --bg-solid-base: #060c14;
+  --bg-solid-base: transparent;
   --text-primary: #ffffff;
   --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
-  --header-bg: rgba(8, 14, 24, 0.35);
+  --header-bg: rgba(8, 14, 24, 0.20);
   --header-border: rgba(255, 255, 255, 0.12);
-  --dropdown-bg: rgba(8, 14, 24, 0.45);
+  --dropdown-bg: rgba(8, 14, 24, 0.25);
   --border-divider: rgba(255, 255, 255, 0.12);
   --pill-bg: rgba(255, 255, 255, 0.08);
-  --tag-bg: rgba(8, 14, 24, 0.45);
+  --tag-bg: rgba(8, 14, 24, 0.25);
   --card-bg: transparent;
   --card-border: rgba(255, 255, 255, 0.12);
-  --card-hover-bg: rgba(14, 22, 36, 0.45);
+  --card-hover-bg: rgba(14, 22, 36, 0.35);
   --photo-opacity: 1;
 }
 
@@ -161,7 +161,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--bg-solid-base);
+  background-color: transparent !important;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -177,7 +177,7 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--bg-solid-base);
+  background-color: transparent !important;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -286,7 +286,7 @@ i {
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  background: var(--bg-solid-base);
+  background: transparent;
 }
 
 .living-photo-layer {
