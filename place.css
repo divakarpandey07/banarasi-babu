@@ -6,6 +6,8 @@
 .place-profile-main {
   padding-top: 74px;
   min-height: 100vh;
+  position: relative;
+  z-index: 10;
 }
 
 .place-profile-inner {

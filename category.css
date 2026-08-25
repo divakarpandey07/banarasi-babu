@@ -6,6 +6,8 @@
 .category-page-main {
   min-height: 100vh;
   padding-top: 86px;
+  position: relative;
+  z-index: 10;
 }
 
 /* --------------------------------------------------------------------------
