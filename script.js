@@ -727,20 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
     chip.addEventListener('click', () => sendAiMessage(chip.dataset.sendPrompt));
   });
 
-  // Floating Quick Return Button Handler
-  const scrollTopBtn = document.getElementById('floating-scroll-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 450) {
-      scrollTopBtn?.classList.add('visible');
-    } else {
-      scrollTopBtn?.classList.remove('visible');
-    }
-  }, { passive: true });
-
-  scrollTopBtn?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
   // Smart History Back Handler for all pages
   document.querySelectorAll('[data-action="go-back"]').forEach(btn => {
     btn.addEventListener('click', (e) => {
