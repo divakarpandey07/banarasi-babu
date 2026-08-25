@@ -6,6 +6,9 @@
   <meta name="description" content="Banarasi Babu — The Living Varanasi Knowledge Base & Travel Concierge. 88 Crescent Ghats, Ancient Jyotirlingas, Halwais, Handlooms, and AI.">
   <title>Banarasi Babu | Living Digital Kashi</title>
   
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="photos/normal.jpg" as="image">
+  
   <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -789,27 +792,27 @@
   </footer>
 
   <!-- Leaflet Map JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Master Datasets -->
-  <script src="data/places.js"></script>
-  <script src="data/ghats.js"></script>
-  <script src="data/activities.js"></script>
-  <script src="data/festivals.js"></script>
-  <script src="data/food.js"></script>
-  <script src="data/markets.js"></script>
-  <script src="data/hotels.js"></script>
-  <script src="data/culture.js"></script>
-  <script src="data/safety-transport.js"></script>
+  <script defer src="data/places.js"></script>
+  <script defer src="data/ghats.js"></script>
+  <script defer src="data/activities.js"></script>
+  <script defer src="data/festivals.js"></script>
+  <script defer src="data/food.js"></script>
+  <script defer src="data/markets.js"></script>
+  <script defer src="data/hotels.js"></script>
+  <script defer src="data/culture.js"></script>
+  <script defer src="data/safety-transport.js"></script>
 
   <!-- Engines -->
-  <script src="engine/geo-engine.js"></script>
-  <script src="engine/live-engine.js"></script>
-  <script src="engine/festival-engine.js"></script>
-  <script src="engine/trip-memory.js"></script>
-  <script src="engine/ai-brain.js"></script>
+  <script defer src="engine/geo-engine.js"></script>
+  <script defer src="engine/live-engine.js"></script>
+  <script defer src="engine/festival-engine.js"></script>
+  <script defer src="engine/trip-memory.js"></script>
+  <script defer src="engine/ai-brain.js"></script>
 
   <!-- Master Homepage Controller -->
-  <script src="script.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

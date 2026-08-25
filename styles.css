@@ -15,7 +15,7 @@
 
 /* ☀️ DAYTIME BASE MATRICES (Deep Ink Typography & 100% Sheer Transparent Glass) */
 [data-theme-mode="day"] {
-  --bg-solid-base: transparent;
+  --bg-solid-base: #e6ecf4;
   --text-primary: #020617;
   --text-secondary: #1e293b;
   --text-muted: #475569;
@@ -33,7 +33,7 @@
 
 /* 🌙 NIGHTTIME / DUSK BASE MATRICES (Pure Luminous Typography & 100% Sheer Nocturnal Glass) */
 [data-theme-mode="night"] {
-  --bg-solid-base: transparent;
+  --bg-solid-base: #060c14;
   --text-primary: #ffffff;
   --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
@@ -161,7 +161,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: #060c14;
+  background-color: var(--bg-solid-base);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -174,7 +176,9 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  background-color: transparent !important;
+  min-height: 100dvh;
+  background-color: var(--bg-solid-base);
+  -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -270,11 +274,19 @@ i {
    -------------------------------------------------------------------------- */
 .ambient-living-bg-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  background: transparent;
+  background: var(--bg-solid-base);
 }
 
 .living-photo-layer {

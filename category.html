@@ -6,6 +6,9 @@
   <meta name="description" content="Banarasi Babu — Dedicated Master Explorer for Varanasi Ghats, Temples, Heritage, Food, and Markets.">
   <title>Master Explorer | Banarasi Babu</title>
   
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="photos/normal.jpg" as="image">
+
   <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -234,24 +237,24 @@
   </footer>
 
   <!-- Master Knowledge Database Layer -->
-  <script src="data/places.js"></script>
-  <script src="data/ghats.js"></script>
-  <script src="data/activities.js"></script>
-  <script src="data/festivals.js"></script>
-  <script src="data/food.js"></script>
-  <script src="data/markets.js"></script>
-  <script src="data/hotels.js"></script>
-  <script src="data/culture.js"></script>
-  <script src="data/safety-transport.js"></script>
+  <script defer src="data/places.js"></script>
+  <script defer src="data/ghats.js"></script>
+  <script defer src="data/activities.js"></script>
+  <script defer src="data/festivals.js"></script>
+  <script defer src="data/food.js"></script>
+  <script defer src="data/markets.js"></script>
+  <script defer src="data/hotels.js"></script>
+  <script defer src="data/culture.js"></script>
+  <script defer src="data/safety-transport.js"></script>
   
   <!-- Core Engines Layer -->
-  <script src="engine/geo-engine.js"></script>
-  <script src="engine/live-engine.js"></script>
-  <script src="engine/festival-engine.js"></script>
-  <script src="engine/trip-memory.js"></script>
-  <script src="engine/ai-brain.js"></script>
+  <script defer src="engine/geo-engine.js"></script>
+  <script defer src="engine/live-engine.js"></script>
+  <script defer src="engine/festival-engine.js"></script>
+  <script defer src="engine/trip-memory.js"></script>
+  <script defer src="engine/ai-brain.js"></script>
 
   <!-- Category Page Dedicated Controller -->
-  <script src="category.js"></script>
+  <script defer src="category.js"></script>
 </body>
 </html>
