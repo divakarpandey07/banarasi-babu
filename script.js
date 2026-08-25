@@ -258,18 +258,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Parallax Motion
+  // 120Hz Optimized Living Background & Scroll Handler
   let scrollY = window.scrollY;
   let targetScrollY = scrollY;
   let animTime = 0;
+  const isMobileTouch = window.innerWidth < 768 || ('ontouchstart' in window);
 
   window.addEventListener('scroll', () => { targetScrollY = window.scrollY; }, { passive: true });
 
   function updateLivingBackground() {
-    scrollY += (targetScrollY - scrollY) * 0.08;
-    animTime += 0.012;
-
-    if (livingPhotoLayer) {
+    if (!isMobileTouch && livingPhotoLayer) {
+      scrollY += (targetScrollY - scrollY) * 0.08;
+      animTime += 0.012;
       const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
       const ratio = Math.min(Math.max(scrollY / maxScroll, 0), 1);
       const scale = 1.05 + ratio * 0.08 + Math.sin(animTime * 0.4) * 0.01;
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateLivingBackground();
 
-  // Canvas Particles
+  // Canvas Particles (120Hz Ultra Lightweight on Mobile)
   const canvas = document.getElementById('living-particle-canvas');
   const ctx = canvas ? canvas.getContext('2d') : null;
   let particles = [];
@@ -298,14 +298,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initParticles(type) {
     particles = [];
-    const count = window.innerWidth < 768 ? 25 : 50;
+    const count = isMobileTouch ? 12 : 45;
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * cw,
         y: Math.random() * ch,
-        size: Math.random() * 2.5 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: -(Math.random() * 0.6 + 0.2),
+        size: Math.random() * 2.2 + 1,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: -(Math.random() * 0.5 + 0.2),
         opacity: Math.random() * 0.6 + 0.2,
         pulse: Math.random() * Math.PI * 2,
         type: type
